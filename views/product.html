@@ -1,0 +1,30 @@
+{{ template "layout" . }}
+
+{{ define "head" }}
+<link rel="stylesheet" href="/static/style.css">
+{{ end }}
+
+{{ define "main" }}
+    
+    {{ range . }}
+        <div class="col-md-12">
+            <div class="name">
+                Product Name : {{ .Name }}
+            </div>
+            <div class="price">
+                <span class="testclass">
+                    Price : {{ .Price }}
+                </span>
+            </div>
+            {{ if lt .Stocks 1 }}
+                <div class="stock">
+                    Stocks : <span style="color: red;">{{ .StockStatus }}</span>
+                </div>
+                {{ else }}
+                <div class="stock">
+                    Stocks : {{ .Stocks }}
+                </div>
+            {{ end }}
+        </div>
+    {{ end }}
+{{ end }}
